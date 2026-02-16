@@ -59,7 +59,7 @@ programs.zsh = {
 
 
   home.packages = with pkgs; [
-      lnreader
+    pdf-cli
     ];
 
 }
