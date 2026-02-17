@@ -12,9 +12,9 @@
     };
     outputs = { self, nixpkgs, home-manager, mango, ...}@inputs:
     let
-      myOverlay = final: prev: {
-        pdf-cli = prev.callPackage ./pdf-cli.nix { };
-      };
+myOverlay = final: prev: {
+  pdf-cli = prev.callPackage ./pdf-cli.nix { };
+};
     in
     {
         nixosConfigurations.yujon = nixpkgs.lib.nixosSystem {

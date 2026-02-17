@@ -1,34 +1,21 @@
-{ stdenv, fetchurl, autoPatchelfHook, lib }:
+{ runCommand, fetchurl, makeWrapper, patchelf, libffi, mupdf, glibc, stdenv, lib }:
 
-stdenv.mkDerivation rec {
-  pname = "pdf-cli";
-  version = "2.0";
-
-  src = fetchurl {
-    url = "https://github.com/Yujonpradhananga/pdf-cli/releases/download/v.${version}/pdf-cli";
-    sha256 = "sha256-rr8Z8ZUL+R35dJ/tjDM0EPNQbPRLi8Xr6DyUtdEi34M=";
-  };
-
-  dontUnpack = true;
-  dontBuild = true;
-
-  nativeBuildInputs = [ autoPatchelfHook ];
+runCommand "pdf-cli-2.0" {
+  nativeBuildInputs = [ makeWrapper patchelf ];
+  buildInputs = [ libffi mupdf glibc ];
+} ''
+  mkdir -p $out/bin
+  cp ${fetchurl {
+    url = "https://github.com/Yujonpradhananga/pdf-cli/releases/download/v.2.0/pdf-cli";
+    sha256 = "sha256-gw5SgFtymqcEO0Oz4eFlI0OaQtaexvuGQAQVzpyz1E0=";
+  }} $out/bin/.pdf-cli-unwrapped
+  chmod 755 $out/bin/.pdf-cli-unwrapped
   
-  # Safety net: allow references just in case, though autoPatchelfHook usually fixes them
-  unsafeDiscardReferences = true;
-
-  installPhase = ''
-    runHook preInstall
-    
-    mkdir -p $out/bin
-    cp $src $out/bin/pdf-cli
-    chmod +x $out/bin/pdf-cli
-    
-    runHook postInstall
-  '';
-
-  meta = with lib; {
-    description = "PDF CLI tool";
-    platforms = platforms.linux;
-  };
-}
+  patchelf \
+    --set-interpreter ${stdenv.cc.bintools.dynamicLinker} \
+    --set-rpath ${lib.makeLibraryPath [ libffi mupdf glibc ]} \
+    $out/bin/.pdf-cli-unwrapped
+  
+  makeWrapper $out/bin/.pdf-cli-unwrapped $out/bin/pdf-cli \
+    --set LD_LIBRARY_PATH ${lib.makeLibraryPath [ libffi mupdf glibc ]}
+''
