@@ -45,12 +45,18 @@ programs.zsh = {
       }
     ];
 
-    initExtra = ''
-          export EDITOR=nvim
-          bindkey '^W' backward-kill-word
-        '';
-
-        profileExtra = ''
+initExtra = ''
+  export EDITOR=nvim
+  bindkey '^W' backward-kill-word
+  function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    command yazi "''$@" --cwd-file="''$tmp"
+    IFS= read -r -d $'\0' cwd < "''$tmp"
+    [ "''$cwd" != "''$PWD" ] && [ -d "''$cwd" ] && builtin cd -- "''$cwd"
+    rm -f -- "''$tmp"
+  }
+'';
+profileExtra = ''
           if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
               exec hyprland
           fi
