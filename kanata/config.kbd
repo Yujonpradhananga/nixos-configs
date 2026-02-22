@@ -10,7 +10,7 @@
   esc  q    w    e    r    t    [    y    u    i    o    p    '    bspc
   lctl a    s    d    f    g    =    h    j    k    l    ret  ;    \
   tab  x    b    c    v    z    -    n    m    ,    .    /    ret
-  lsft lalt lmet lsft lctl @spc @spc bspc lctl lsft lalt rsft
+  lsft lalt lmet lsft lctl ]    lctl bspc @spc lsft lalt rsft
   lctl lmet bspc           spc            ralt rmet rctl
 )
 
