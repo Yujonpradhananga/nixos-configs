@@ -2,8 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
-
+{ config, pkgs, lib, inputs, ... }:
+let
+  android-sdk = inputs.android-nixpkgs.sdk.x86_64-linux (sdkPkgs: with sdkPkgs; [
+cmdline-tools-latest
+    build-tools-35-0-0
+    platform-tools
+    platforms-android-36
+    ndk-28-2-13676358
+    cmake-3-22-1
+  ]);
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -70,7 +79,11 @@ LIBGL_ALWAYS_SOFTWARE = "0";
 __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
 
-
+environment.variables = {
+  ANDROID_SDK_ROOT = "${android-sdk}/share/android-sdk";
+  ANDROID_HOME = "${android-sdk}/share/android-sdk";
+  JAVA_HOME = "${pkgs.jdk17}";
+};
   networking.hostName = "nixos"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -132,14 +145,14 @@ evdev:input:b0003v1A2Cp9605*
   programs.zsh={
 	enable=true;
   };
+programs.nix-ld.enable = true;
 
-
-programs.yazi = {
-  enable = true;
-  settings = {
-    yazi = lib.importTOML ./yazi.toml;
+  programs.yazi = {
+    enable = true;
+    settings = {
+      yazi = lib.importTOML ./yazi.toml;
+    };
   };
-};
 
 
 # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -148,7 +161,7 @@ programs.yazi = {
     description = "yujon";
     home="/home/yujon";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" ];
     packages = with pkgs; [];
   };
 
@@ -168,6 +181,7 @@ programs.yazi = {
     kitty
     git
     swww
+    android-tools
     quickshell
     waybar
     qutebrowser
@@ -194,6 +208,8 @@ programs.yazi = {
     flutter
     python3
     meson
+    android-sdk
+    jdk17
     vimPlugins.LazyVim
     (pywal16.overridePythonAttrs (old: {
         propagatedBuildInputs = (old.propagatedBuildInputs or []) ++ [

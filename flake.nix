@@ -9,6 +9,9 @@
             url = "github:DreamMaoMao/mango";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        android-nixpkgs = {
+          url = "github:tadfisher/android-nixpkgs";
+        };
     };
     outputs = { self, nixpkgs, home-manager, mango, ...}@inputs:
     let
