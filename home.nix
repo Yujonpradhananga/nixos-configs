@@ -45,7 +45,7 @@ programs.zsh = {
       }
     ];
 
-initExtra = ''
+initContent = ''
   export EDITOR=nvim
   bindkey '^W' backward-kill-word
   function y() {
