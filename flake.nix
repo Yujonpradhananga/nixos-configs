@@ -12,12 +12,17 @@
         android-nixpkgs = {
           url = "github:tadfisher/android-nixpkgs";
         };
+
+        quickshell = {
+              url = "github:outfoxxed/quickshell";
+              inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
-    outputs = { self, nixpkgs, home-manager, mango, ...}@inputs:
+    outputs = { self, nixpkgs, home-manager, mango, quickshell, ...}@inputs:
     let
-myOverlay = final: prev: {
-  pdf-cli = prev.callPackage ./pdf-cli.nix { };
-};
+    myOverlay = final: prev: {
+      pdf-cli = prev.callPackage ./pdf-cli.nix { };
+    };
     in
     {
         nixosConfigurations.yujon = nixpkgs.lib.nixosSystem {

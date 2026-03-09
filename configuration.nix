@@ -182,7 +182,7 @@ programs.nix-ld.enable = true;
     git
     swww
     android-tools
-    quickshell
+    (inputs.quickshell.packages.${pkgs.system}.default.withModules [ pkgs.qt6.qtmultimedia ])
     waybar
     qutebrowser
     fastfetch
@@ -206,6 +206,7 @@ programs.nix-ld.enable = true;
     rust-analyzer
     clippy
     flutter
+    mpv
     python3
     meson
     android-sdk

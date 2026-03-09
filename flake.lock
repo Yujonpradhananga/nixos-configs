@@ -165,12 +165,33 @@
         "type": "indirect"
       }
     },
+    "quickshell": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772925576,
+        "narHash": "sha256-mMoiXABDtkSJxCYDrkhJ/TrrJf5M46oUfIlJvv2gkZ0=",
+        "owner": "outfoxxed",
+        "repo": "quickshell",
+        "rev": "15a84097653593dd15fad59a56befc2b7bdc270d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "outfoxxed",
+        "repo": "quickshell",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "android-nixpkgs": "android-nixpkgs",
         "home-manager": "home-manager",
         "mango": "mango",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "quickshell": "quickshell"
       }
     },
     "scenefx": {
