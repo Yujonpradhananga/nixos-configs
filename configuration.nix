@@ -94,6 +94,9 @@ environment.variables = {
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Firewall rule
+  networking.firewall.allowedTCPPorts = [ 50051 ];
+
   # Set your time zone.
   time.timeZone = "Asia/Kathmandu";
 
