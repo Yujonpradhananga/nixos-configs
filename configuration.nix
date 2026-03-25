@@ -26,7 +26,9 @@ in
   boot.loader.grub.devices = ["nodev"];
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
-
+  boot.blacklistedKernelModules = ["ideapad_laptop"];
+  hardware.enableRedistributableFirmware = true;
+  hardware.enableAllFirmware = true;
   #enable openGL
   hardware.graphics.enable = true;
 
@@ -47,6 +49,8 @@ xdg.portal = {
   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   config.common.default = "*";
 };
+
+
 # Add the Kanata service user to necessary groups
 systemd.services.kanata-internalKeyboard.serviceConfig = {
   SupplementaryGroups = [
