@@ -20,9 +20,6 @@
     };
     outputs = { self, nixpkgs, home-manager, mango, quickshell, ...}@inputs:
     let
-    myOverlay = final: prev: {
-      pdf-cli = prev.callPackage ./pdf-cli.nix { };
-    };
     in
     {
         nixosConfigurations.yujon = nixpkgs.lib.nixosSystem {
@@ -30,7 +27,6 @@
             specialArgs = { inherit inputs; };
             modules = [
                 ({ config, pkgs, ... }: {
-                    nixpkgs.overlays = [ myOverlay ];
                 })
                 ./configuration.nix
                 ./hardware-configuration.nix

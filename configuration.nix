@@ -213,6 +213,7 @@ programs.nix-ld.enable = true;
     rust-analyzer
     clippy
     flutter
+    pdf-cli
     mpv
     python3
     meson

@@ -64,8 +64,5 @@ profileExtra = ''
   };
 
 
-  home.packages = with pkgs; [
-    pdf-cli
-    ];
 
 }
