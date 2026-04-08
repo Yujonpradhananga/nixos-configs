@@ -97,6 +97,8 @@ environment.variables = {
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.networkmanager.dns = "none";
+  networking.nameservers = [ "8.8.8.8" "1.1.1.1" ];
 
   # Firewall rule
   networking.firewall.allowedTCPPorts = [ 50051 ];
