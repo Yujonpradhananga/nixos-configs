@@ -48,20 +48,20 @@ xdg.portal = {
 
 
 # Add the Kanata service user to necessary groups
-systemd.services.kanata-internalKeyboard.serviceConfig = {
-  SupplementaryGroups = [
-    "input"
-    "uinput"
-  ];
-};
-services.kanata = {
-  enable = true;
-  keyboards = {
-    myKeyboard = {
-      configFile = ./kanata/config.kbd;
-    };
-  };
-};
+# systemd.services.kanata-internalKeyboard.serviceConfig = {
+#   SupplementaryGroups = [
+#     "input"
+#     "uinput"
+#   ];
+# };
+# services.kanata = {
+#   enable = true;
+#   keyboards = {
+#     myKeyboard = {
+#       configFile = ./kanata/config.kbd;
+#     };
+#   };
+# };
 
 services.postgresql = {
   enable = true;
