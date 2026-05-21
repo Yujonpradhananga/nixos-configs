@@ -8,19 +8,13 @@
   home.stateVersion = "25.11";
   home.sessionVariables = {
    EDITOR = "nvim"; 
-   LD_LIBRARY_PATH = "$HOME/.config/quickshell/modules";
-   QML2_IMPORT_PATH = "$HOME/.config/quickshell/modules";
+   QML2_IMPORT_PATH="$HOME/.local/lib/qt6/qml";
    XDG_CURRENT_DESKTOP = "wlroots";
   };
  systemd.user.sessionVariables = {
    WAYLAND_DISPLAY = "wayland-0";
    XDG_CURRENT_DESKTOP = "wlroots";
  };
- programs.neovim = {
-  enable = true;
-  viAlias = true;
-  vimAlias = true;
-};
 programs.zsh = {
     enable = true;
     sessionVariables = {

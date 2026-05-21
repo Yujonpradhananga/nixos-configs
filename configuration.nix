@@ -177,6 +177,7 @@ programs.nix-ld.enable = true;
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
+    neovim
     evtest
     btop
     wget
@@ -185,7 +186,7 @@ programs.nix-ld.enable = true;
     kanata
     kitty
     git
-    swww
+    awww
     android-tools
     (inputs.quickshell.packages.${pkgs.system}.default.withModules [ pkgs.qt6.qtmultimedia ])
     waybar
