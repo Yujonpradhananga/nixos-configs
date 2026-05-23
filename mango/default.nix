@@ -6,6 +6,6 @@
 
   wayland.windowManager.mango = {
     enable = true;
-    settings = builtins.readFile ./config.conf;
+    extraConfig = builtins.readFile ./config.conf;
   };
 }

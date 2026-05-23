@@ -154,9 +154,6 @@ programs.nix-ld.enable = true;
 
   programs.yazi = {
     enable = true;
-    settings = {
-      yazi = lib.importTOML ./yazi.toml;
-    };
   };
 
 
@@ -188,7 +185,10 @@ programs.nix-ld.enable = true;
     git
     awww
     android-tools
-    (inputs.quickshell.packages.${pkgs.system}.default.withModules [ pkgs.qt6.qtmultimedia ])
+(inputs.quickshell.packages.${pkgs.system}.default.withModules [
+    pkgs.qt6.qtmultimedia
+    pkgs.qt6.qtwebengine
+])
     waybar
     qutebrowser
     fastfetch
@@ -206,6 +206,7 @@ programs.nix-ld.enable = true;
     nodejs
     go
     cargo
+    cava
     rustc
     rustfmt
     rustlings
