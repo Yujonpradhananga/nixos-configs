@@ -77,6 +77,7 @@ services.postgresql = {
 environment.sessionVariables = {
 LIBGL_ALWAYS_SOFTWARE = "0";
 __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+YAZI_CONFIG_HOME = "/home/yujon/.config/yazi";
   };
 
 environment.variables = {
@@ -185,10 +186,10 @@ programs.nix-ld.enable = true;
     git
     awww
     android-tools
-(inputs.quickshell.packages.${pkgs.system}.default.withModules [
-    pkgs.qt6.qtmultimedia
-    pkgs.qt6.qtwebengine
-])
+    (pkgs.callPackage ./quickshell.nix {
+            inherit pkgs;
+            quickshell = inputs.quickshell;
+        })
     waybar
     qutebrowser
     fastfetch
