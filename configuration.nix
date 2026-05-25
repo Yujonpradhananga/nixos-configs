@@ -122,8 +122,7 @@ fonts.packages = with pkgs; [
   proggyfonts
   dina-font
   fira-code-symbols
-  jetbrains-mono
-  monaspace
+  nerd-fonts.jetbrains-mono
 ];
 
 

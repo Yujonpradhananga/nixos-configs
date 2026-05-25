@@ -15,6 +15,13 @@
    WAYLAND_DISPLAY = "wayland-0";
    XDG_CURRENT_DESKTOP = "wlroots";
  };
+ fonts.fontconfig = {         # <-- add here
+    enable = true;
+    defaultFonts = {
+      monospace = [ "JetBrainsMono Nerd Font Mono" ];
+      sansSerif = [ "JetBrainsMono Nerd Font" ];
+    };
+  };
 programs.zsh = {
     enable = true;
     sessionVariables = {
