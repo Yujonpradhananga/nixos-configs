@@ -219,6 +219,8 @@ programs.nix-ld.enable = true;
     meson
     android-sdk
     jdk17
+    unzip
+    qt6.qtshadertools
     vimPlugins.LazyVim
     (pywal16.overridePythonAttrs (old: {
         propagatedBuildInputs = (old.propagatedBuildInputs or []) ++ [
