@@ -190,6 +190,7 @@ programs.nix-ld.enable = true;
             quickshell = inputs.quickshell;
         })
     waybar
+    material-symbols
     qutebrowser
     fastfetch
     wl-clipboard
