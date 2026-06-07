@@ -10,7 +10,7 @@
    EDITOR = "nvim"; 
    QML2_IMPORT_PATH="$HOME/.local/lib/qt6/qml";
    XDG_CURRENT_DESKTOP = "wlroots";
-   XCURSOR_THEME = "Kokomi_Cursor";
+   XCURSOR_THEME = "Bocchi-The-Cursor";
    XCURSOR_SIZE = "24";
   };
  systemd.user.sessionVariables = {
@@ -25,21 +25,21 @@
     };
   };
   home.pointerCursor = {
-    package = pkgs.callPackage ./pkgs/kokCursor.nix {};
-    name = "Kokomi_Cursor";
+    package = pkgs.callPackage ./pkgs/bocchiCursor.nix {};
+    name = "Bocchi-The-Cursor";
     size = 24;
     gtk.enable = true;
   };
-programs.zsh = {
-    enable = true;
-    sessionVariables = {
-     EDITOR = "nvim";
-    };   
-    oh-my-zsh = {
+  programs.zsh = {
       enable = true;
-      theme = "robbyrussell";
-      plugins = [ "git" "sudo" ];
-    };
+      sessionVariables = {
+      EDITOR = "nvim";
+      };   
+      oh-my-zsh = {
+        enable = true;
+        theme = "robbyrussell";
+        plugins = [ "git" "sudo" ];
+      };
     
     plugins = [
       {
