@@ -10,17 +10,25 @@
    EDITOR = "nvim"; 
    QML2_IMPORT_PATH="$HOME/.local/lib/qt6/qml";
    XDG_CURRENT_DESKTOP = "wlroots";
+   XCURSOR_THEME = "Kokomi_Cursor";
+   XCURSOR_SIZE = "24";
   };
  systemd.user.sessionVariables = {
    WAYLAND_DISPLAY = "wayland-0";
    XDG_CURRENT_DESKTOP = "wlroots";
  };
- fonts.fontconfig = {         # <-- add here
+ fonts.fontconfig = {
     enable = true;
     defaultFonts = {
       monospace = [ "JetBrainsMono Nerd Font Mono" ];
       sansSerif = [ "JetBrainsMono Nerd Font" ];
     };
+  };
+  home.pointerCursor = {
+    package = pkgs.callPackage ./pkgs/kokCursor.nix {};
+    name = "Kokomi_Cursor";
+    size = 24;
+    gtk.enable = true;
   };
 programs.zsh = {
     enable = true;
@@ -63,7 +71,4 @@ profileExtra = ''
           fi
         '';
   };
-
-
-
 }

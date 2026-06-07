@@ -63,6 +63,8 @@ xdg.portal = {
 #   };
 # };
 
+services.upower.enable = true;
+
 services.postgresql = {
   enable = true;
   ensureDatabases = [ "location_sharing" "khana_au"];
@@ -115,6 +117,7 @@ environment.variables = {
 
 # fonts 
 fonts.packages = with pkgs; [
+  material-symbols 
   noto-fonts
   noto-fonts-cjk-sans
   noto-fonts-color-emoji
@@ -205,6 +208,7 @@ programs.nix-ld.enable = true;
     gcc
     tree-sitter
     nodejs
+    ripgrep
     go
     cargo
     cava
