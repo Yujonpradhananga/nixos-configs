@@ -226,6 +226,7 @@ programs.nix-ld.enable = true;
     jdk17
     unzip
     qt6.qtshadertools
+    qt6.qtdeclarative
     vimPlugins.LazyVim
     (pywal16.overridePythonAttrs (old: {
         propagatedBuildInputs = (old.propagatedBuildInputs or []) ++ [
