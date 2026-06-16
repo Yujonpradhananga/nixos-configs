@@ -3,7 +3,7 @@
         nixpkgs.url="nixpkgs/nixos-unstable";
         home-manager = {
             url = "github:nix-community/home-manager";
-            inputs.nixpkgs.follows = "nixpkgs";            
+            inputs.nixpkgs.follows = "nixpkgs";
         };
         mango = {
             url = "github:DreamMaoMao/mango";
@@ -12,7 +12,6 @@
         android-nixpkgs = {
           url = "github:tadfisher/android-nixpkgs";
         };
-
         quickshell = {
               url = "github:outfoxxed/quickshell";
               inputs.nixpkgs.follows = "nixpkgs";

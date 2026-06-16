@@ -7,12 +7,13 @@
   home.homeDirectory = "/home/yujon";
   home.stateVersion = "25.11";
   home.sessionVariables = {
-   EDITOR = "nvim"; 
-   QML2_IMPORT_PATH="$HOME/.local/lib/qt6/qml";
-   XDG_CURRENT_DESKTOP = "wlroots";
-   XCURSOR_THEME = "Bocchi-The-Cursor";
-   XCURSOR_SIZE = "24";
+    EDITOR = "nvim"; 
+    QML2_IMPORT_PATH="$HOME/.local/lib/qt6/qml";
+    XDG_CURRENT_DESKTOP = "wlroots";
+    XCURSOR_THEME = "Bocchi-The-Cursor";
+    XCURSOR_SIZE = "24";
   };
+home.file.".local/share/fonts/".source = ./Fonts;
  systemd.user.sessionVariables = {
    WAYLAND_DISPLAY = "wayland-0";
    XDG_CURRENT_DESKTOP = "wlroots";
