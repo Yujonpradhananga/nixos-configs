@@ -18,13 +18,13 @@ home.file.".local/share/fonts/".source = ./Fonts;
    WAYLAND_DISPLAY = "wayland-0";
    XDG_CURRENT_DESKTOP = "wlroots";
  };
- fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      monospace = [ "JetBrainsMono Nerd Font Mono" ];
-      sansSerif = [ "JetBrainsMono Nerd Font" ];
-    };
+fonts.fontconfig = {
+  enable = true;
+  defaultFonts = {
+    monospace = [ "MonoLisa" ];
+    sansSerif = [ "Noto Sans" ];
   };
+};
   home.pointerCursor = {
     package = pkgs.callPackage ./pkgs/bocchiCursor.nix {};
     name = "Bocchi-The-Cursor";

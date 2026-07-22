@@ -38,6 +38,9 @@ in
 	package = config.boot.kernelPackages.nvidiaPackages.stable;
 }; 
 
+
+security.rtkit.enable = true;
+
 # XDG Portal configuration
 xdg.portal = {
   enable = true;
