@@ -13,6 +13,7 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
   boot.blacklistedKernelModules = ["ideapad_laptop"];
+  boot.kernelParams = ["pcie_aspm.policy=performance"];
   hardware.enableRedistributableFirmware = true;
   #enable openGL
   hardware.graphics.enable = true;
@@ -74,7 +75,7 @@ YAZI_CONFIG_HOME = "/home/yujon/.config/yazi";
   networking.networkmanager.enable = true;
   networking.networkmanager.dns = "none";
   networking.nameservers = [ "8.8.8.8" "1.1.1.1" ];
-
+  networking.networkmanager.wifi.powersave = false;
   # Firewall rule
   networking.firewall.allowedTCPPorts = [ 50051 ];
 
