@@ -9,9 +9,6 @@
             url = "github:DreamMaoMao/mango";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        android-nixpkgs = {
-          url = "github:tadfisher/android-nixpkgs";
-        };
         quickshell = {
               url = "github:outfoxxed/quickshell";
               inputs.nixpkgs.follows = "nixpkgs";

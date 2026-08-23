@@ -1,14 +1,4 @@
 { config, pkgs, lib, inputs, ... }:
-let
-  android-sdk = inputs.android-nixpkgs.sdk.x86_64-linux (sdkPkgs: with sdkPkgs; [
-cmdline-tools-latest
-    build-tools-35-0-0
-    platform-tools
-    platforms-android-36
-    ndk-28-2-13676358
-    cmake-3-22-1
-  ]);
-in
 {
   imports =
     [
@@ -85,12 +75,7 @@ __GLX_VENDOR_LIBRARY_NAME = "nvidia";
 YAZI_CONFIG_HOME = "/home/yujon/.config/yazi";
   };
 
-environment.variables = {
-  ANDROID_SDK_ROOT = "${android-sdk}/share/android-sdk";
-  ANDROID_HOME = "${android-sdk}/share/android-sdk";
-  JAVA_HOME = "${pkgs.jdk17}";
-};
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos";
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -169,7 +154,7 @@ programs.nix-ld.enable = true;
     description = "yujon";
     home="/home/yujon";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel"];
     packages = with pkgs; [];
   };
 
@@ -190,7 +175,6 @@ programs.nix-ld.enable = true;
     kitty
     git
     awww
-    android-tools
     (pkgs.callPackage ./quickshell.nix {
             inherit pkgs;
             quickshell = inputs.quickshell;
@@ -210,7 +194,6 @@ programs.nix-ld.enable = true;
     curl
     gcc
     tree-sitter
-    nodejs
     ripgrep
     go
     cargo
@@ -220,13 +203,10 @@ programs.nix-ld.enable = true;
     rustlings
     rust-analyzer
     clippy
-    flutter
     pdf-cli
     mpv
     python3
     meson
-    android-sdk
-    jdk17
     unzip
     qt6.qtshadertools
     qt6.qtdeclarative
