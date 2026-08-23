@@ -14,7 +14,6 @@
   boot.loader.grub.useOSProber = true;
   boot.blacklistedKernelModules = ["ideapad_laptop"];
   hardware.enableRedistributableFirmware = true;
-  hardware.enableAllFirmware = true;
   #enable openGL
   hardware.graphics.enable = true;
 
@@ -58,17 +57,6 @@ xdg.portal = {
 
 services.upower.enable = true;
 
-services.postgresql = {
-  enable = true;
-  ensureDatabases = [ "location_sharing" "khana_au"];
-  enableTCPIP = true;  # Add this line
-  authentication = pkgs.lib.mkOverride 10 ''
-    #type database  DBuser  auth-method
-    local all       all     trust
-    host  all       all     127.0.0.1/32 trust
-    host  all       all     ::1/128      trust
-  '';
-};
 environment.sessionVariables = {
 LIBGL_ALWAYS_SOFTWARE = "0";
 __GLX_VENDOR_LIBRARY_NAME = "nvidia";
@@ -180,7 +168,6 @@ programs.nix-ld.enable = true;
             quickshell = inputs.quickshell;
         })
     waybar
-    material-symbols
     qutebrowser
     fastfetch
     wl-clipboard
@@ -200,7 +187,6 @@ programs.nix-ld.enable = true;
     cava
     rustc
     rustfmt
-    rustlings
     rust-analyzer
     clippy
     pdf-cli
@@ -213,8 +199,8 @@ programs.nix-ld.enable = true;
     vimPlugins.LazyVim
     (pywal16.overridePythonAttrs (old: {
         propagatedBuildInputs = (old.propagatedBuildInputs or []) ++ [
-          python313Packages.haishoku
-          python313Packages.colorthief
+          python3Packages.haishoku
+          python3Packages.colorthief
         ];
       }))
     obs-studio
