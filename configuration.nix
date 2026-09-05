@@ -35,7 +35,7 @@ security.rtkit.enable = true;
 xdg.portal = {
   enable = true;
   wlr.enable = true;
-  extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland];
   config.common.default = "*";
 };
 
@@ -183,7 +183,6 @@ programs.nix-ld.enable = true;
     gcc
     tree-sitter
     ripgrep
-    go
     cargo
     cava
     rustc
