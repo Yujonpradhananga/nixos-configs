@@ -15,8 +15,8 @@
   boot.blacklistedKernelModules = ["ideapad_laptop"];
   boot.kernelParams = ["pcie_aspm.policy=performance"];
   hardware.enableRedistributableFirmware = true;
-  #enable openGL
   hardware.graphics.enable = true;
+  hardware.keyboard.qmk.enable = true;
 
   #NVIDIA drivers
   services.xserver.videoDrivers = ["nvidia"];
@@ -204,6 +204,7 @@ programs.nix-ld.enable = true;
         ];
       }))
     obs-studio
+    vial
   ];
 
 nix.settings.experimental-features = ["nix-command" "flakes" "ca-derivations"];
